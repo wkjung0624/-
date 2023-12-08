@@ -1,0 +1,94 @@
+{
+  "info": {
+    "_postman_id": "4e99ab62-85c5-4b48-9b8a-8f1a8a0422c3",
+    "name": "[12.07 ~ 02.01] p2p lending",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "16431071"
+  },
+  "item": [
+    {
+      "name": "로그인",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"username\" : \"admi22n\",\n    \"password\" : \"pwd123\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1/user/login",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "user",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "사용자정보조회",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1/user/info",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "user",
+            "info"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "환율조회",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"searchDate\" : \"\",\n    \"data\" : \"\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1/currency/noticeExchangeRate",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "currency",
+            "noticeExchangeRate"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
