@@ -31,13 +31,14 @@ public class UserInfoInq_CTR {
 		HttpSession session = request.getSession();
 
 		if (session.getAttribute("userInfo") != null) {
-			return ResponseEntity.ok().build();
+			UserInfoInq_ODT output = (UserInfoInq_ODT) session.getAttribute("userInfo");
+			return ResponseEntity.ok(output);
 		} else {
 			UserInfoInq_ODT output = userInfoInqSvc.getUserInfo(input);
 
 			if (output != null) {
 				session.setAttribute("userInfo", output);
-				return ResponseEntity.ok().build();
+				return ResponseEntity.ok(output);
 			}
 		}
 
