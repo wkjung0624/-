@@ -21,6 +21,9 @@ public class UserInfoInq_SVC {
 
 	private final MemberDAO memberDAO;
 
+	public int addUser(UserInfoInq_IDT input) {
+		return memberDAO.addMember(input);
+	}
 	public UserInfoInq_ODT getUserInfo(UserInfoInq_IDT input){
 		List<UserInfoInq_ODT> allItems = memberDAO.getAllMembers();
 

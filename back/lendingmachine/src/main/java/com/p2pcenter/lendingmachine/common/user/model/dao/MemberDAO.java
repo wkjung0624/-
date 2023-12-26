@@ -1,5 +1,6 @@
 package com.p2pcenter.lendingmachine.common.user.model.dao;
 
+import com.p2pcenter.lendingmachine.common.user.controller.dto.UserInfoInq_IDT;
 import com.p2pcenter.lendingmachine.common.user.controller.dto.UserInfoInq_ODT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,6 +18,10 @@ public class MemberDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    public int addMember(UserInfoInq_IDT input) {
+        String query = "INSERT INTO MEMBER (USER_ID, USER_PW, USER_NAME, PHONE_NO, CDD_YN) VALUES (?, ?, ?, ?, ?)";
+        return jdbcTemplate.update(query, input.getUserId(), input.getPassword(), "", "", "Y");
+    }
     public List<UserInfoInq_ODT> getAllMembers() {
         String query = "SELECT * FROM MEMBER";
 

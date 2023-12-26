@@ -46,6 +46,17 @@ public class UserInfoInq_CTR {
 	}
 
 	@ResponseBody
+	@PostMapping("/registration")
+	public ResponseEntity registration(@RequestBody UserInfoInq_IDT input, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+
+		int stat = userInfoInqSvc.addUser(input);
+
+		return ResponseEntity.ok(stat);
+	}
+
+
+	@ResponseBody
 	@PostMapping("/info")
 	public ResponseEntity getUserInfo(HttpServletRequest request) {
 		HttpSession session = request.getSession();
