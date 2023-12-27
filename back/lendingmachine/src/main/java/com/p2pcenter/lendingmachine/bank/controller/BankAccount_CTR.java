@@ -2,6 +2,7 @@ package com.p2pcenter.lendingmachine.bank.controller;
 
 
 import com.p2pcenter.lendingmachine.bank.controller.dto.FrnrCurrency_IDT;
+import com.p2pcenter.lendingmachine.bank.controller.dto.Withdraw_IDT;
 import com.p2pcenter.lendingmachine.bank.service.BankAccount_SVC;
 import com.p2pcenter.lendingmachine.common.user.controller.dto.UserInfoInq_ODT;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,5 +32,21 @@ public class BankAccount_CTR {
         UserInfoInq_ODT output = (UserInfoInq_ODT) session.getAttribute("userInfo");
 
         return ResponseEntity.ok(bankAccountSvc.getAllAccountInquiry(output.getUserId()));
+    }
+
+    @ResponseBody
+    @PostMapping("/withdraw")
+    public ResponseEntity withdraw(@RequestBody Withdraw_IDT input, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        UserInfoInq_ODT output = (UserInfoInq_ODT) session.getAttribute("userInfo");
+
+        // 보내는 계좌 소유주 검증 필요
+        int status = bankAccountSvc.withdrawWithAcntNo(input.getFromAcntNo(), input.getToAcntNo(), input.getBalance());
+
+        if (status == 1) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 }

@@ -16,6 +16,10 @@ public class BankAccount_SVC {
     private final BankAccountDAO bankAccountDAO;
 
     public List<BankAccount> getAllAccountInquiry(String userId) {
-        return  bankAccountDAO.getAllAccountInquiry(userId);
+        return bankAccountDAO.getAllAccountInquiry(userId);
+    }
+
+    public int withdrawWithAcntNo(String from, String to, String balance) {
+        return bankAccountDAO.withdrawWithAcntNo(from, to, balance);
     }
 }
