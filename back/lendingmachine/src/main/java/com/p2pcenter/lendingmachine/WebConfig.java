@@ -12,7 +12,8 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 .allowedOrigins("*") // 이 부분을 적절히 수정하여 필요한 도메인만 허용할 수 있습니다.
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("*");
+                .allowedHeaders("*")
+                .allowCredentials(true); // 인증 정보 허용
 
     }
 }
